@@ -61,7 +61,6 @@ class App:
     def load(self):
         self.background = pygame.image.load('maze1.png')
         self.background = pygame.transform.scale(self.background, (MAZE_WIDTH, MAZE_HEIGHT))
-         
 
         # Opening walls file
         # Creating walls list with co-ords of walls
@@ -129,22 +128,15 @@ class App:
         pass
 
     def start_draw(self):
-        
-        #self.background = pygame.image.load('cool_bg.jpg')
-        #self.background = pygame.transform.scale(self.background, (MAZE_WIDTH, MAZE_HEIGHT))
-        #self.screen(BLACK)
-        self.start_bg = pygame.image.load("cool_bg.jpg")
-        self.start_bg = pygame.transform.scale(self.start_bg, (MAZE_WIDTH, MAZE_HEIGHT))
-        self.screen.blit(self.start_bg, (23,5))
-
+        self.screen.fill(BLACK)
         
         self.draw_text('YOU HAVE THREE LIVES', self.screen, [
-                       WIDTH//2, HEIGHT-30], START_TEXT_SIZE, (0, 100, 58), START_FONT, centered=True)
+                       WIDTH//2, HEIGHT//2-50], START_TEXT_SIZE, (0, 100, 58), START_FONT, centered=True)
         self.draw_text('PUSH SPACE BAR TO BEGIN PAC-THON', self.screen, [
-                       WIDTH//2, HEIGHT - 10], START_TEXT_SIZE, (44, 167, 198), START_FONT, centered=True)
+                       WIDTH//2, HEIGHT//2+50], START_TEXT_SIZE, (44, 167, 198), START_FONT, centered=True)
         self.draw_text('HIGH SCORE', self.screen, [4, 0],
                        START_TEXT_SIZE, (255, 255, 255), START_FONT)
-        pygame.display.update()
+        pygame.display.update()  
 
 ########################### PLAYING FUNCTIONS ##################################
 
@@ -161,8 +153,6 @@ class App:
                     self.player.move(vec(0, -1))
                 if event.key == pygame.K_DOWN:
                     self.player.move(vec(0, 1))
-
-       
 
     def playing_update(self):
         self.player.update()
